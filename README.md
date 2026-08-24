@@ -1,132 +1,367 @@
-<h1 align="center">Kamil Nowak — Interactive 3D Portfolio</h1>
+# 👋 Hey, I'm Ansh Kumar
 
 <p align="center">
-  A cinematic portfolio combining reliable engineering with motion, visual depth and real-time graphics.
+  <strong>AI & Data Science Student • AI/ML Developer • GenAI Builder • Hackathon Enthusiast</strong>
 </p>
 
 <p align="center">
-  <a href="https://nowakkamil.com">Live website</a>
+  <a href="https://github.com/">GitHub</a>
   ·
-  <a href="https://www.linkedin.com/in/nowakkamil">LinkedIn</a>
+  <a href="https://www.linkedin.com/">LinkedIn</a>
   ·
-  <a href="https://github.com/nowakkamil">GitHub</a>
+  <a href="https://anshkumar.dev/">Portfolio</a>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Three.js-WebGL-000000?style=flat-square&logo=threedotjs&logoColor=white" alt="Three.js and WebGL" />
-  <img src="https://img.shields.io/badge/TypeScript-7%20%7C%20Strict-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript 7 in strict mode" />
-  <img src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite 8" />
+  <img src="https://img.shields.io/badge/Python-Expert-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/AI%2FML-Building-FF6F00?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/GenAI-Developer-8E44AD?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/React-Developer-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
 </p>
 
-## About the project
+---
 
-This is not a template-based portfolio or a static collection of cards. It is an exploration of how software engineering, interface design, animation and real-time rendering can work together without sacrificing clarity, accessibility or maintainability.
+## 🚀 Who am I?
 
-The experience has two main goals: to present my work through a distinctive visual identity and to make moving through it feel natural. **Three.js**, custom **GLSL shaders** and particles create the atmosphere, while **GSAP** connects scrolling, camera movement, text and shader transitions into one coherent timeline.
+I'm **Ansh Kumar**, a **B.Tech student in Artificial Intelligence & Data Science** with a passion for building practical AI-powered products.
 
-Visitors can explore my professional experience, education and recommendations, navigate an interactive constellation of projects, and get in touch directly through the website.
+I enjoy taking an idea from:
 
-## Behind the experience
+**💡 Concept → 🧠 AI/ML → ⚙️ Backend → 🎨 Interface → 🚀 Deployment**
 
-🌌 **Cinematic WebGL environment:** particles, lighting, fog, bloom and section-aware shaders<br>
-🧭 **Scroll-directed storytelling:** coordinated DOM, camera and shader transitions<br>
-✨ **Project constellation:** connected projects with keyboard-operable details and navigation<br>
-📱 **Responsive rendering:** dedicated camera, layout and effect settings for smaller devices<br>
-⚡ **Performance:** bounded frame updates, reusable scene objects and geometry work moved to a Web Worker<br>
-♿ **Accessibility:** semantic content, reduced-motion support and professional information kept outside WebGL<br>
-🔎 **SEO:** structured data, social metadata, sitemap and a canonical custom domain
+Rather than building projects just to add them to a resume, I like experimenting with technologies that can solve **real-world problems**.
 
-The application is organised into focused modules for page sections, rendering systems, shaders, interactions and styling. `main.ts` acts primarily as a composition root instead of holding the full implementation.
+My interests currently revolve around:
 
-React is part of my professional stack, but this project does not need a large component state model. Native DOM APIs and modular TypeScript keep the interface lightweight and allow the visual layer to remain independent.
+* 🤖 Artificial Intelligence & Machine Learning
+* 🧠 Generative AI & LLM applications
+* 🔗 AI Agents & Automation
+* 📊 Data Science & Analytics
+* 💻 Full-Stack AI applications
+* 📱 Offline-first intelligent systems
+* 🏆 Hackathons & rapid prototyping
 
-## Quality audit ✨
+---
 
-The perfect sweep is a small but meaningful achievement for a visually complex portfolio powered by Three.js, WebGL, custom shaders and extensive animation.
+## 🧠 My AI Journey
 
-<p align="center">
-  <img src="docs/assets/lighthouse-perfect-score.svg" alt="Perfect Lighthouse audit: 100 Performance, 100 Accessibility, 100 Best Practices, 100 SEO and 3/3 Agentic Browsing" width="1200" />
-</p>
+I'm particularly interested in the space where **AI meets software engineering**.
 
-<p align="center">
-  <strong>100</strong> Performance &nbsp;·&nbsp;
-  <strong>100</strong> Accessibility &nbsp;·&nbsp;
-  <strong>100</strong> Best Practices &nbsp;·&nbsp;
-  <strong>100</strong> SEO &nbsp;·&nbsp;
-  <strong>3/3</strong> Agentic Browsing
-</p>
+I've worked with technologies across the AI stack, including:
 
-<p align="center">
-  <sub>
-    <strong>Audit snapshot</strong> · 20 August 2026 at 20:52 GMT+2 · Lighthouse 13.4.0 · Chromium 151 · Initial single-page desktop load · Custom throttling
-  </sub>
-</p>
-
-## Core technologies
-
-🟦 **Language and tooling:** TypeScript, Vite<br>
-🎨 **Rendering:** Three.js, WebGL, GLSL<br>
-🎬 **Motion:** GSAP, ScrollTrigger, ScrollSmoother, SplitText<br>
-🖌️ **Styling:** SCSS<br>
-🧵 **Background processing:** Web Worker<br>
-☁️ **Hosting:** Cloudflare Pages and GitHub Pages
-
-## Email templates
-
-The repository also contains the email assets used by the contact flow:
-
-- [Customer confirmation email](emails/README.md) — build, variables and sending behaviour;
-- [Email signature](emails/signature/README.md) — Spark installation and testing.
-
-## Search and image checks
-
-SEO is focused on the portfolio itself and does not require a separate publishing workflow.
-
-```bash
-npm run seo:check        # validate the production SEO output in dist/
-npm run images:generate  # regenerate responsive project-image variants
-npm run images:check     # verify image dimensions, sizes and fallbacks
+```text
+Python
+   ↓
+Data Analysis & Machine Learning
+   ↓
+Deep Learning
+   ↓
+Generative AI / LLMs
+   ↓
+RAG & Vector Databases
+   ↓
+AI Agents & Automation
+   ↓
+Production Applications
 ```
 
-The deployment and recurring Google Search Console/Bing Webmaster Tools checklist is documented in [docs/seo-operations.md](docs/seo-operations.md).
+My goal is simple:
 
-## Local development
+> **Don't just train models. Build useful things with them.**
 
-You will need a recent Node.js release, npm and a browser with WebGL support.
+---
 
-```bash
-npm install
-npm run dev
+## 🛠️ Tech Stack
+
+### 💻 Languages
+
+<p>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/C-A8B9CC?style=flat-square&logo=c&logoColor=black" />
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
+</p>
+
+### 🤖 AI / ML
+
+* Machine Learning
+* Deep Learning
+* Generative AI
+* Large Language Models
+* RAG Systems
+* NLP
+* Computer Vision
+* Transfer Learning
+* TensorFlow / TensorFlow Lite
+* Hugging Face Transformers
+
+### 🧩 AI Infrastructure
+
+* FAISS
+* Weaviate
+* Groq API
+* LLaMA
+* Mistral
+* Vector Search
+* Prompt Engineering
+* AI Agents
+* AI Automation
+
+### 🌐 Development
+
+* React.js
+* Next.js
+* Vite
+* FastAPI
+* Flask
+* Node.js
+* REST APIs
+* Flutter
+
+### 🗄️ Databases
+
+* PostgreSQL
+* SQLite
+* Firebase
+* Vector Databases
+
+### ☁️ Tools & Platforms
+
+* Git & GitHub
+* Linux
+* AWS
+* IBM SkillsBuild
+* Cloud Deployment
+* n8n
+* VS Code
+
+---
+
+# 🔥 Featured Projects
+
+## 🌾 Krishi Sakhi — Offline-First Digital Farming Assistant
+
+An intelligent farming assistant designed around **offline-first AI** for agricultural environments with limited connectivity.
+
+**Tech:** Flutter · SQLite · FastAPI · PostgreSQL · FAISS · TensorFlow Lite
+
+### What makes it interesting?
+
+* 📱 Offline-first architecture
+* 🤖 AI-powered assistance
+* 🔍 Semantic/vector search
+* 🌐 Sync when connectivity returns
+* 🧠 On-device ML capabilities
+
+---
+
+## 🫁 LungCare AI
+
+An AI-powered healthcare project focused on **lung cancer prediction** using deep learning and transfer learning.
+
+**Tech:** Python · TensorFlow · CNN · Xception · Transfer Learning
+
+The project explores how deep learning can assist in identifying patterns in medical imaging while demonstrating the complete ML pipeline from preprocessing to prediction.
+
+---
+
+## ⚖️ LegalMitra AI
+
+A conversational AI application designed to make legal information easier to access.
+
+**Tech:** Python · Flask · Groq API · LLaMA · Generative AI
+
+Features include:
+
+* 💬 AI-powered conversations
+* 🧠 LLM-based responses
+* ⚡ Fast inference
+* 🔌 API-based architecture
+* 🌐 Web application interface
+
+---
+
+## 💊 MediSure
+
+A medicine authentication and verification platform designed to help users identify potentially suspicious medicines.
+
+**Tech:** React · Python · APIs · Database Systems
+
+The project combines software engineering with a real-world healthcare problem.
+
+---
+
+## 🔐 Phishing Link Detector
+
+An ML-based system for identifying potentially malicious URLs.
+
+**Focus:** Machine Learning · Feature Engineering · Cybersecurity · Classification
+
+---
+
+## 🎙️ YouSpeak
+
+A YouTube translation and accessibility concept that combines speech processing and AI to make video content more accessible across languages.
+
+**Tech:** Python · Speech Processing · AI · TTS
+
+---
+
+# 🏆 Hackathon Journey
+
+Hackathons are where I probably learn the fastest.
+
+I've participated in **15+ national-level hackathons**, building and pitching projects under tight deadlines.
+
+### 🥇 Highlights
+
+* 🥇 **Hackcraft 2.0 — 1st Place**
+* 🥈 **Code Sangam — 2nd Place**
+* 🚀 Code4Cause
+* 🚀 Hack Innoverse
+* 🚀 Hack for Impact
+* 🚀 Hack Arena
+* 🚀 Code Kshetra
+
+For me, hackathons aren't just competitions.
+
+They're a way to test:
+
+**Idea → Architecture → Development → Debugging → Pitch → Reality**
+
+---
+
+# 💼 Experience & Programs
+
+### 🤖 IBM SkillsBuild — AI Automation & Intelligent Solutions
+
+Completed the **IBM SkillsBuild AI Automation & Intelligent Solutions Internship**, working around AI automation, intelligent solutions and practical problem-solving.
+
+### 📊 IBM SkillsBuild — Data & AI
+
+Experience with IBM learning programs covering areas including:
+
+* Data Fundamentals
+* Big Data Foundations
+* Data Analysis using Python
+* AI & Automation
+
+### 💡 InAmigos Foundation
+
+Worked as an **Engagement Manager** under the Hustlers Fellowship Program, contributing to:
+
+* NGO research
+* Data collection
+* AI-powered data analysis
+* Volunteer opportunity compilation
+
+---
+
+# 🎓 Education
+
+**B.Tech — Artificial Intelligence & Data Science**
+
+📍 Global Institute of Technology & Management, Gurugram
+
+**2023 — 2027**
+
+Alongside academics, I actively participate in hackathons, technical communities, projects and leadership activities.
+
+---
+
+# 👥 Leadership & Community
+
+Beyond coding, I enjoy working with people and building communities.
+
+### 📌 Student Placement Coordinator
+
+Helping coordinate placement-related activities and communication between students and stakeholders.
+
+### 📊 President — Social Insights Club
+
+Working around data, technology and student engagement.
+
+### 📸 Joint Secretary — Capture Crew
+
+Contributing to photography, media and creative activities.
+
+### 💻 CS Tech Manager — Team Sankalp
+
+Part of a technical community of **750+ members**, contributing to technology-focused activities and coordination.
+
+---
+
+# 📈 Currently Exploring
+
+```text
+🤖 AI Agents
+🧠 Generative AI
+🔗 RAG & Vector Databases
+⚙️ AI Automation
+👁️ Computer Vision
+📊 Advanced Data Science
+🧬 Deep Learning
+📱 Edge / On-device AI
+☁️ AI Deployment
 ```
 
-Useful commands:
+I'm especially interested in building systems where AI isn't just a chatbot sitting behind a UI, but actually **takes actions, connects tools, processes information and solves workflows**.
 
-```bash
-npm run typecheck  # validate TypeScript
-npm run lint       # check code and styles
-npm test           # run contact-form tests
-npm run build      # create the production build
-npm run preview    # preview the generated site
-```
+---
 
-The contact form uses Cloudflare Pages Functions, Turnstile and Resend. A production setup requires `VITE_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`, `RESEND_API_KEY`, `CONTACT_SENDER` and `CONTACT_RECIPIENT`. Visitor confirmation emails can be enabled with `SEND_VISITOR_CONFIRMATION=true`.
+# 🧪 What I'm Building Next
 
-## Deployment
+The long-term goal is to move from:
 
-The primary version is served through Cloudflare Pages at [nowakkamil.com](https://nowakkamil.com/). The [GitHub Pages deployment](https://nowakkamil.github.io/) remains available as an alternate address, while the custom domain is canonical for search engines and public sharing.
+> **"AI-powered projects"**
 
-## About me
+towards:
 
-I am a senior full-stack developer specialising in **React, TypeScript and .NET**. I build robust applications across front end, back end and cloud infrastructure, and particularly enjoy transforming ambitious visual concepts into maintainable digital products.
+> **"AI-powered products."**
 
-My interest in Three.js, WebGL and digital motion draws on a background in fine-art photography and compositing — the point where technical problem-solving and visual experimentation meet.
+That means focusing more on:
 
-## License
+* Production-ready AI systems
+* Autonomous AI agents
+* Intelligent automation
+* Multimodal AI
+* Edge AI
+* Real-world data products
+* Scalable AI infrastructure
 
-Unless a separate licence file states otherwise, the source code, visual design, text, shaders, media and project assets are provided for evaluation and demonstration purposes. They may not be copied, redistributed or used as a template without permission. Third-party libraries and assets remain subject to their respective licences.
+---
+
+# 📊 GitHub
 
 <p align="center">
-  <i>
-    Built with TypeScript, Three.js, GLSL, GSAP, SCSS and a refusal to make another ordinary portfolio.
-  </i>
+  <img src="https://github-readme-stats.vercel.app/api?username=YOUR_USERNAME&show_icons=true&theme=tokyonight&hide_border=true" />
+</p>
+
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=YOUR_USERNAME&theme=tokyonight&hide_border=true" />
+</p>
+
+---
+
+# 🤝 Let's Connect
+
+I'm always interested in:
+
+* 💼 AI/ML internships
+* 🚀 Entry-level AI opportunities
+* 🤖 GenAI projects
+* 🧠 AI automation
+* 🏆 Hackathons
+* 🤝 Open-source collaboration
+* 💡 Building something interesting
+
+If you're working on something around **AI, Data Science, GenAI or automation**, feel free to reach out.
+
+<p align="center">
+  <strong>Build. Break. Learn. Repeat. 🚀</strong>
+</p>
+
+<p align="center">
+  <i>Turning ideas into intelligent systems, one project at a time.</i>
 </p>
