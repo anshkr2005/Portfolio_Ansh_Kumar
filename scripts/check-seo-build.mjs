@@ -6,7 +6,7 @@ import { existsSync } from 'node:fs';
 const scriptsDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptsDirectory, '..');
 const distDirectory = path.join(repositoryRoot, 'dist');
-const siteOrigin = 'https://anshkumar.dev/';
+const siteOrigin = 'https://anshkumar.dev//';
 const failures = [];
 
 const fail = (message) => failures.push(message);
