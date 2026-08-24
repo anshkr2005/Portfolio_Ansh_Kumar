@@ -1,0 +1,199 @@
+<mjml lang="en" dir="ltr">
+    <mj-head>
+        <mj-title>New inquiry — nowakkamil.com</mj-title>
+        <mj-preview>New portfolio inquiry from {{ customerName }}</mj-preview>
+        <mj-attributes>
+            <mj-all
+                font-family="'Avenir Next', Avenir, 'Segoe UI', Helvetica, sans-serif"
+                font-weight="400"
+            />
+            <mj-text color="#dce6f2" font-size="16px" line-height="28px" />
+            <mj-section padding="0" />
+            <mj-column padding="0" />
+        </mj-attributes>
+        <mj-style inline="inline">
+            body {
+                overflow-x: hidden !important;
+            }
+            .inquiry-surface {
+                width: 100% !important;
+                box-sizing: border-box !important;
+                border: 1px solid #192b42 !important;
+                border-radius: 10px !important;
+                background-color: #030a18 !important;
+                background-clip: padding-box !important;
+                overflow: hidden !important;
+            }
+            .inquiry-surface > table {
+                width: 100% !important;
+                table-layout: fixed !important;
+                background-color: #030a18 !important;
+                border-collapse: separate !important;
+                border-spacing: 0 !important;
+                border-radius: 9px !important;
+                overflow: hidden !important;
+            }
+            .inquiry-email a {
+                color: #53a4ff !important;
+                text-decoration: none !important;
+                -webkit-text-fill-color: #53a4ff !important;
+            }
+        </mj-style>
+        <mj-style>
+            @media only screen and (max-width: 480px) {
+                .mobile-gutter {
+                    padding-left: 24px !important;
+                    padding-right: 24px !important;
+                }
+                .inquiry-name {
+                    padding-top: 30px !important;
+                    font-size: 28px !important;
+                    line-height: 35px !important;
+                }
+            }
+        </mj-style>
+        <mj-raw
+            ><meta name="color-scheme" content="dark" /> <meta name="supported-color-schemes"
+            content="dark" /></mj-raw
+        >
+    </mj-head>
+    <mj-body width="680px" background-color="#010611">
+        <mj-section padding="20px 16px" background-color="#010611">
+            <mj-column
+                css-class="inquiry-surface"
+                background-color="#030a18"
+                border="1px solid #192b42"
+                border-radius="10px"
+                padding="0"
+            >
+                <mj-table
+                    css-class="mobile-gutter"
+                    cellpadding="0"
+                    cellspacing="0"
+                    padding="36px 42px 0"
+                    width="100%"
+                >
+                    <tr>
+                        <td
+                            width="50%"
+                            style="
+                                padding: 0 18px 14px 0;
+                                color: #b9dcff;
+                                font-size: 12px;
+                                font-weight: 600;
+                                letter-spacing: 3px;
+                                line-height: 18px;
+                                text-transform: uppercase;
+                            "
+                        >
+                            New inquiry
+                        </td>
+                        <td
+                            align="right"
+                            width="50%"
+                            style="
+                                padding: 0 0 14px;
+                                color: #eef5fd;
+                                font-size: 11px;
+                                font-weight: 500;
+                                letter-spacing: 2.2px;
+                                line-height: 18px;
+                                text-transform: uppercase;
+                            "
+                        >
+                            nowakkamil.com
+                        </td>
+                    </tr>
+                    <tr>
+                        <td
+                            colspan="2"
+                            bgcolor="#4f8fca"
+                            height="1"
+                            style="
+                                height: 1px;
+                                background-color: #4f8fca;
+                                font-size: 0;
+                                line-height: 0;
+                                mso-line-height-rule: exactly;
+                            "
+                        >
+                            &nbsp;
+                        </td>
+                    </tr>
+                </mj-table>
+                <mj-text
+                    css-class="mobile-gutter inquiry-name"
+                    color="#f6f8fb"
+                    font-size="34px"
+                    font-weight="600"
+                    letter-spacing="-0.8px"
+                    line-height="42px"
+                    padding="38px 42px 4px"
+                    >{{ customerName }}</mj-text
+                >
+                <mj-text
+                    css-class="mobile-gutter inquiry-email"
+                    color="#53a4ff"
+                    font-size="14px"
+                    font-weight="500"
+                    line-height="22px"
+                    padding="0 42px 30px"
+                    ><a href="mailto:{{ customerEmail }}">{{ customerEmail }}</a></mj-text
+                >
+                <mj-text
+                    css-class="mobile-gutter"
+                    color="#b9dcff"
+                    font-size="11px"
+                    font-weight="600"
+                    letter-spacing="2.4px"
+                    line-height="18px"
+                    padding="0 42px 12px"
+                    text-transform="uppercase"
+                    >Message</mj-text
+                >
+                <mj-table
+                    css-class="mobile-gutter"
+                    cellpadding="0"
+                    cellspacing="0"
+                    padding="0 42px 42px"
+                    width="100%"
+                >
+                    <tr>
+                        <td
+                            width="3"
+                            bgcolor="#53a4ff"
+                            style="
+                                width: 3px;
+                                padding: 0;
+                                background-color: #53a4ff;
+                                font-size: 0;
+                                line-height: 0;
+                            "
+                        >
+                            &nbsp;
+                        </td>
+                        <td
+                            bgcolor="#020a18"
+                            style="
+                                padding: 18px 20px;
+                                border-top: 1px solid #173a61;
+                                border-right: 1px solid #173a61;
+                                border-bottom: 1px solid #173a61;
+                                background-color: #020a18;
+                                color: #eef5fd;
+                                font-size: 16px;
+                                font-weight: 400;
+                                line-height: 27px;
+                                overflow-wrap: anywhere;
+                                word-break: break-word;
+                                word-wrap: break-word;
+                            "
+                        >
+                            {{ message }}
+                        </td>
+                    </tr>
+                </mj-table>
+            </mj-column>
+        </mj-section>
+    </mj-body>
+</mjml>

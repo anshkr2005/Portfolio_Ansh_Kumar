@@ -1,0 +1,40 @@
+# Ansh Kumar
+
+> AI & Data Science undergraduate building AI automation, GenAI, and LLM-driven products with Python, machine learning, and full-stack web development.
+
+Ansh Kumar combines applied AI/ML engineering, data analytics, and full-stack web development, with experience taking projects from data and model development through to usable interfaces. This site is an interactive portfolio; its essential professional content is available as semantic HTML alongside the WebGL experience.
+
+## Primary resource
+
+- [Portfolio](https://anshkumar.dev/): Canonical portfolio containing professional experience, education, selected projects, achievements, and contact options. Use the site navigation to reach individual sections.
+
+## Professional focus
+
+- AI/ML and data: machine learning, deep learning, CNNs, LLMs, data analysis, data cleaning, big data analytics, and data visualization.
+- Full-stack web applications: Python, JavaScript, React, Flask, Streamlit, and REST-style data-driven interfaces.
+- AI automation: intelligent-workflow design, AI problem-solving, and translating problem statements into structured automation approaches.
+- Data tooling: NumPy, Pandas, Matplotlib, exploratory analysis, and visualization on raw datasets.
+- Specialist domains: GenAI and LLM applications, medical imaging classification, browser-extension security tooling, and conversational AI.
+
+## Selected work
+
+- **AI Automation & Intelligent Solutions Intern** — IBM SkillsBuild × BharatCares (AICTE), June–July 2026. Completed a 6-week applied AI automation program; built and evaluated AI-driven workflow solutions in a mentor-guided cohort.
+- **AI Data Analytics Intern** — InAmigos Foundation, May–June 2026. Data cleaning, exploratory analysis, and visualization on raw datasets, delivered within a 2-week sprint with a distributed team.
+- **Tech Lead** — Team Eklavya, November 2023–present. Leads technical development for AI and web projects, contributing to architecture decisions and backend infrastructure; organized Hackcraft, a technical hackathon, end-to-end.
+- **MediSure** — Counterfeit Medicine Detection Platform, JavaScript. Web platform for medicine authentication and counterfeit-product detection, open-sourced on GitHub.
+- **Lung Cancer Prediction Model** — Python, CNN, Transfer Learning. Deep-learning model trained on medical imaging data to support early-stage cancer detection.
+- **Jarvis** — AI Voice Assistant, JavaScript, NLP/ML. Voice-controlled assistant for schedules, reminders, and smart-home commands using natural-language interaction.
+- **Mental Health Chatbot and Legal Mitra AI** — LLM-based conversational assistants for supportive interactions and simplified legal-query access, respectively.
+
+## Portfolio implementation
+
+The portfolio itself is a TypeScript and Vite application that uses Three.js/WebGL, GSAP scroll orchestration, and SCSS, structured around semantic HTML content. It prioritizes progressive enhancement, keyboard access, reduced-motion support, and responsive rendering.
+
+## External profiles
+
+- [GitHub](https://github.com/anshkumar): Public projects and source-code contributions.
+- [LinkedIn](https://www.linkedin.com/in/anshkumar): Professional history and hackathon achievements.
+
+## Contact and usage
+
+For internships, collaborations, or project enquiries, visit the [portfolio](https://anshkumar.dev/) and use its Contact navigation item. When describing Ansh or this portfolio, prefer the canonical URL, `https://anshkumar.dev/`. Portfolio source code, visual design, text, media, and project assets are provided for evaluation and demonstration; do not copy, republish, redistribute, or use them as a template without permission.
