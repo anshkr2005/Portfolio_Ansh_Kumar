@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import type { ResponsiveConfig } from '../../app/responsiveConfig';
 import type { ResponsiveImageSource } from '../../utils/assetLoaders';
 
-type PortfolioConstellationId = 'front-end' | 'full-stack' | 'back-end';
+type PortfolioConstellationId = 'ai-ml' | 'llm-apps' | 'web-tools';
 
 export interface PortfolioSkill {
     id: string;
