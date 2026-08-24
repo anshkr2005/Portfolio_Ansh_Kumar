@@ -6,10 +6,16 @@ import { existsSync } from 'node:fs';
 const scriptsDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(scriptsDirectory, '..');
 const distDirectory = path.join(repositoryRoot, 'dist');
-const siteOrigin = 'https://anshkumar.dev//';
+
+/*
+ * Canonical production domain
+ */
+const siteOrigin = 'https://anshkumar.dev';
+
 const failures = [];
 
 const fail = (message) => failures.push(message);
+
 const decodeEntities = (value) =>
     value
         .replaceAll('&amp;', '&')
@@ -20,15 +26,18 @@ const decodeEntities = (value) =>
 
 const parseAttributes = (tag) =>
     Object.fromEntries(
-        [...tag.matchAll(/([:\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)].map((match) => [
-            match[1].toLowerCase(),
-            decodeEntities(match[2] ?? match[3] ?? ''),
-        ]),
+        [...tag.matchAll(/([:\w-]+)\s*=\s*(?:"([^"]*)"|'([^']*)')/g)].map(
+            (match) => [
+                match[1].toLowerCase(),
+                decodeEntities(match[2] ?? match[3] ?? ''),
+            ],
+        ),
     );
 
 const getMeta = (html, key, value) => {
     for (const match of html.matchAll(/<meta\b[^>]*>/gi)) {
         const attributes = parseAttributes(match[0]);
+
         if (attributes[key] === value) {
             return attributes.content;
         }
@@ -38,74 +47,159 @@ const getMeta = (html, key, value) => {
 const getCanonical = (html) => {
     for (const match of html.matchAll(/<link\b[^>]*>/gi)) {
         const attributes = parseAttributes(match[0]);
+
         if (attributes.rel?.split(/\s+/).includes('canonical')) {
             return attributes.href;
         }
     }
 };
 
+/*
+ * Creates clean canonical URLs.
+ *
+ * /
+ *   -> https://anshkumar.dev/
+ *
+ * /privacy
+ *   -> https://anshkumar.dev/privacy
+ */
+const canonicalUrl = (route = '/') => {
+    const cleanOrigin = siteOrigin.replace(/\/+$/, '');
+
+    if (route === '/') {
+        return `${cleanOrigin}/`;
+    }
+
+    const cleanRoute = route.replace(/^\/+|\/+$/g, '');
+
+    return `${cleanOrigin}/${cleanRoute}`;
+};
+
 const routeToFile = (route) => {
     if (route === '/') {
         return path.join(distDirectory, 'index.html');
     }
+
     return path.join(distDirectory, `${route.slice(1)}.html`);
 };
 
-const sitemapSource = await fs.readFile(path.join(distDirectory, 'sitemap.xml'), 'utf8');
+const sitemapSource = await fs.readFile(
+    path.join(distDirectory, 'sitemap.xml'),
+    'utf8',
+);
+
+/*
+ * Read sitemap URLs using Ansh Kumar's canonical domain.
+ */
 const sitemapRoutes = [
-    ...sitemapSource.matchAll(/<loc>(https:\/\/nowakkamil\.com[^<]*)<\/loc>/g),
-].map((match) => new URL(match[1]).pathname);
+    ...sitemapSource.matchAll(
+        /<loc>https:\/\/anshkumar\.dev([^<]*)<\/loc>/g,
+    ),
+].map((match) => match[1] || '/');
+
 const expectedRoutes = new Set(sitemapRoutes);
 const checkedHtml = new Map();
 
 if (sitemapRoutes.length === 0) {
     fail('Sitemap contains no canonical routes');
 }
+
 if (expectedRoutes.size !== sitemapRoutes.length) {
     fail('Sitemap contains duplicate routes');
 }
+
 if (expectedRoutes.has('/privacy')) {
     fail('Privacy page must not be included in the sitemap');
 }
 
 for (const route of sitemapRoutes) {
     const filePath = routeToFile(route);
+
     let html;
+
     try {
         html = await fs.readFile(filePath, 'utf8');
     } catch {
         fail(`${route}: sitemap target is missing from dist`);
         continue;
     }
+
     checkedHtml.set(route, html);
 
-    const title = /<title>([\s\S]*?)<\/title>/i.exec(html)?.[1]?.trim();
-    const description = getMeta(html, 'name', 'description');
-    const robots = getMeta(html, 'name', 'robots') ?? '';
+    const title =
+        /<title>([\s\S]*?)<\/title>/i.exec(html)?.[1]?.trim();
+
+    const description = getMeta(
+        html,
+        'name',
+        'description',
+    );
+
+    const robots =
+        getMeta(html, 'name', 'robots') ?? '';
+
     const canonical = getCanonical(html);
-    const h1Count = [...html.matchAll(/<h1\b/gi)].length;
-    const expectedCanonical = `${siteOrigin}${route}`;
+
+    const h1Count = [
+        ...html.matchAll(/<h1\b/gi),
+    ].length;
+
+    const expectedCanonical = canonicalUrl(route);
 
     if (!title) {
         fail(`${route}: missing title`);
     }
+
     if (!description) {
         fail(`${route}: missing meta description`);
     }
+
     if (/\bnoindex\b/i.test(robots)) {
         fail(`${route}: indexable sitemap URL has noindex`);
     }
+
     if (canonical !== expectedCanonical) {
-        fail(`${route}: canonical is ${canonical ?? 'missing'}, expected ${expectedCanonical}`);
+        fail(
+            `${route}: canonical is ${
+                canonical ?? 'missing'
+            }, expected ${expectedCanonical}`,
+        );
     }
+
     if (h1Count !== 1) {
-        fail(`${route}: expected one H1, found ${h1Count}`);
+        fail(
+            `${route}: expected one H1, found ${h1Count}`,
+        );
     }
-    if (getMeta(html, 'property', 'og:image') !== `${siteOrigin}/og.png`) {
-        fail(`${route}: missing canonical Open Graph image`);
+
+    const expectedOgImage =
+        `${siteOrigin}/og.png`;
+
+    const expectedTwitterImage =
+        `${siteOrigin}/og.png`;
+
+    if (
+        getMeta(
+            html,
+            'property',
+            'og:image',
+        ) !== expectedOgImage
+    ) {
+        fail(
+            `${route}: missing canonical Open Graph image`,
+        );
     }
-    if (getMeta(html, 'name', 'twitter:image') !== `${siteOrigin}/og.png`) {
-        fail(`${route}: missing canonical Twitter image`);
+
+    if (
+        getMeta(
+            html,
+            'name',
+            'twitter:image',
+        ) !== expectedTwitterImage
+    ) {
+        fail(
+            `${route}: missing canonical Twitter image`,
+        );
     }
 
     for (const match of html.matchAll(
@@ -114,70 +208,172 @@ for (const route of sitemapRoutes) {
         try {
             JSON.parse(match[1]);
         } catch (error) {
-            fail(`${route}: invalid JSON-LD (${error.message})`);
+            fail(
+                `${route}: invalid JSON-LD (${error.message})`,
+            );
         }
     }
 }
 
-const privacyHtml = await fs.readFile(path.join(distDirectory, 'privacy.html'), 'utf8');
-if (!/\bnoindex\b/i.test(getMeta(privacyHtml, 'name', 'robots') ?? '')) {
+/*
+ * Privacy page
+ */
+const privacyHtml = await fs.readFile(
+    path.join(distDirectory, 'privacy.html'),
+    'utf8',
+);
+
+if (
+    !/\bnoindex\b/i.test(
+        getMeta(
+            privacyHtml,
+            'name',
+            'robots',
+        ) ?? '',
+    )
+) {
     fail('/privacy: expected noindex');
 }
-if (getCanonical(privacyHtml) !== `${siteOrigin}/privacy`) {
-    fail('/privacy: canonical must use the extensionless route');
+
+if (
+    getCanonical(privacyHtml) !==
+    canonicalUrl('/privacy')
+) {
+    fail(
+        '/privacy: canonical must use the extensionless route',
+    );
 }
 
-const notFoundHtml = await fs.readFile(path.join(distDirectory, '404.html'), 'utf8');
-if (!/\bnoindex\b/i.test(getMeta(notFoundHtml, 'name', 'robots') ?? '')) {
+/*
+ * 404 page
+ */
+const notFoundHtml = await fs.readFile(
+    path.join(distDirectory, '404.html'),
+    'utf8',
+);
+
+if (
+    !/\bnoindex\b/i.test(
+        getMeta(
+            notFoundHtml,
+            'name',
+            'robots',
+        ) ?? '',
+    )
+) {
     fail('/404.html: expected noindex');
 }
+
 if (getCanonical(notFoundHtml)) {
-    fail('/404.html: not-found page must not declare a canonical');
+    fail(
+        '/404.html: not-found page must not declare a canonical',
+    );
 }
 
-const knownRoutes = new Set([...sitemapRoutes, '/privacy']);
-for (const [route, html] of checkedHtml) {
-    for (const match of html.matchAll(/<a\b[^>]*href=(?:"([^"]*)"|'([^']*)')[^>]*>/gi)) {
-        const href = match[1] ?? match[2] ?? '';
+/*
+ * Validate internal links.
+ */
+const knownRoutes = new Set([
+    ...sitemapRoutes,
+    '/privacy',
+]);
 
-        if (!href.startsWith('/') || href.startsWith('//')) {
+for (const [route, html] of checkedHtml) {
+    for (const match of html.matchAll(
+        /<a\b[^>]*href=(?:"([^"]*)"|'([^']*)')[^>]*>/gi,
+    )) {
+        const href =
+            match[1] ?? match[2] ?? '';
+
+        if (
+            !href.startsWith('/') ||
+            href.startsWith('//')
+        ) {
             continue;
         }
 
-        const targetPath = new URL(href, siteOrigin).pathname;
+        const targetPath = new URL(
+            href,
+            `${siteOrigin}/`,
+        ).pathname;
 
         const publicFilePath = join(
             process.cwd(),
             'public',
-            decodeURIComponent(targetPath).replace(/^\/+/, ''),
+            decodeURIComponent(targetPath).replace(
+                /^\/+/,
+                '',
+            ),
         );
 
-        const isKnownRoute = knownRoutes.has(targetPath);
-        const isPublicFile = existsSync(publicFilePath);
+        const isKnownRoute =
+            knownRoutes.has(targetPath);
 
-        if (!isKnownRoute && !isPublicFile) {
-            fail(`${route}: internal link points to unknown target ${targetPath}`);
+        const isPublicFile =
+            existsSync(publicFilePath);
+
+        if (
+            !isKnownRoute &&
+            !isPublicFile
+        ) {
+            fail(
+                `${route}: internal link points to unknown target ${targetPath}`,
+            );
         }
     }
 }
 
-const robotsSource = await fs.readFile(path.join(distDirectory, 'robots.txt'), 'utf8');
-if (!robotsSource.includes(`Sitemap: ${siteOrigin}/sitemap.xml`)) {
-    fail('robots.txt does not reference the canonical sitemap');
+/*
+ * Validate robots.txt
+ */
+const robotsSource = await fs.readFile(
+    path.join(distDirectory, 'robots.txt'),
+    'utf8',
+);
+
+const canonicalSitemap =
+    `${siteOrigin}/sitemap.xml`;
+
+if (
+    !robotsSource.includes(
+        `Sitemap: ${canonicalSitemap}`,
+    )
+) {
+    fail(
+        'robots.txt does not reference the canonical sitemap',
+    );
 }
 
+/*
+ * Validate Open Graph image.
+ */
 try {
-    const ogStats = await fs.stat(path.join(distDirectory, 'og.png'));
+    const ogStats = await fs.stat(
+        path.join(distDirectory, 'og.png'),
+    );
+
     if (ogStats.size === 0) {
         fail('og.png is empty');
     }
 } catch {
-    fail('og.png is missing from the production build');
+    fail(
+        'og.png is missing from the production build',
+    );
 }
 
+/*
+ * Final result
+ */
 if (failures.length > 0) {
-    console.error(`SEO build validation failed:\n- ${failures.join('\n- ')}`);
+    console.error(
+        `SEO build validation failed:\n- ${failures.join(
+            '\n- ',
+        )}`,
+    );
+
     process.exitCode = 1;
 } else {
-    console.log(`SEO build validation passed for ${sitemapRoutes.length} indexable routes.`);
+    console.log(
+        `SEO build validation passed for ${sitemapRoutes.length} indexable routes.`,
+    );
 }
