@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://anshkumar.dev//
+Sitemap: https://anshkumar.dev/sitemap.xml
