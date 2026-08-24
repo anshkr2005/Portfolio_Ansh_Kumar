@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nowakkamil.com/sitemap.xml
+Sitemap: https://anshkumar.dev//
